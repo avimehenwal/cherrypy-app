@@ -1,0 +1,12 @@
+FROM frolvlad/alpine-python3
+MAINTAINER avimehenwal
+
+LABEL author=avimehenwal
+ENV python=3
+ENV testframework=unittest
+
+COPY . /app
+WORKDIR /app
+RUN pip install -r test-requirements.txt; exit 0
+
+CMD ["python3", "test_app.py"]

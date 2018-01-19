@@ -1,15 +1,18 @@
 image: docker:latest
 
 stages:
-- test
 - build
+- test
 
 services:
   - docker:dind
 
-docker_build:
-  stage: build
+before_script:
+  - docker run --rm registry.gitlab.com/avimehenwal/cherrypy-app app.py
+
+app-test:
+  stage: test
+  image: python3.5
   script:
-  - docker images ls -a
-  - docker build -t avimehenwal/cherrypy-app:avi .
-  - docker images ls -a
+  - pip install -r test-requirements.txt
+  - python test_app.py
