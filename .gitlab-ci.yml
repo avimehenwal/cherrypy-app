@@ -10,6 +10,6 @@ services:
 docker_build:
   stage: build
   script:
-  - docker images ls
+  - docker images ls -a
   - docker build -t avimehenwal/cherrypy-app:avi .
-  - docker images ls
+  - docker images ls -a
