@@ -41,3 +41,11 @@ $ docker stop cherrypy
 ```
 $ docker build -t avimehenwal/cherrypy-app:0.5 .
 ```
+
+To store, persist and query data you need a proper database server. There exist many to choose from with various paradigm support:
+
+relational: PostgreSQL, SQLite, MariaDB, Firebird
+column-oriented: HBase, Cassandra
+key-store: redis, memcached
+document oriented: Couchdb, MongoDB
+graph-oriented: neo4j
