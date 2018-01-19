@@ -1,3 +1,5 @@
+# CHERRYPY-APP
+
 A very basic web application using the
 [CherryPy](http://cherrypy.org/) framework and Python 3.5.
 
@@ -5,37 +7,37 @@ The image is quite light thanks to
 [Alpine Linux](https://hub.docker.com/r/frolvlad/alpine-python3/).
 
 
-Run it
-======
+## App in action
 
-Run it as follows:
+### RUN
 
 ```
-GENERIC
-$ docker run --name cherrypy --rm -d -p 8080:8080 avimehenwal/cherrypy-app:0.4 ./app.py
+$ docker run --name cpy --rm -d -p 8080:8080 avimehenwal/cherrypy-app:0.4 ./app.py
+```
+
+For live logs run like
+
+```
+$ docker run --name cpy --rm -p 8080:8080 avimehenwal/cherrypy-app:0.4 helloworld.py
 ```
 
 You can point your browser to http://locahost:8080/
 
-You can view the logs like this:
+### LOGS
 
 ```
 $ docker logs cherrypy
 ```
 
-Finally you can stop the server as follows:
+### STOP
 
 ```
 $ docker stop cherrypy
 ```
 
 
-Build it
-========
-
-You may rebuild the image:
+## Build it
 
 ```
-$ docker build -t MYREPO/IMAGE_NAME .
-$ docker build -t version:0.2 -t author:avimehenwal -t base:alpine -t avimehenwal/cherrypy-app .
+$ docker build -t avimehenwal/cherrypy-app:0.5 .
 ```
