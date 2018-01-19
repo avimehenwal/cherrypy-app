@@ -12,7 +12,7 @@ before_script:
 
 app-test:
   stage: test
-  image: python3.5
+  image: python:3.5
   script:
   - pip install -r test-requirements.txt
   - python test_app.py
