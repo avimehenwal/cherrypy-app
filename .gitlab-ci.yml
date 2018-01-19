@@ -1,0 +1,15 @@
+image: docker:latest
+
+stages:
+- test
+
+before_script:
+  - docker pull avimehenwal/simple-webapp:0.3
+  - docker run -d avimehenwal/simple-webapp:0.3
+
+run_webapp:
+  stage: test
+  image: python:3.5
+  script:
+  - pip install requests
+  - python test_helloworld.py

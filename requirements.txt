@@ -1,1 +1,1 @@
-cherrypy
+cherryPy==13.1.0

@@ -11,7 +11,8 @@ Run it
 Run it as follows:
 
 ```
-$ docker run --name cherrypy -d -p 8080:8080 lawouach/cherrypy-hello-world
+GENERIC
+$ docker run --name cherrypy --rm -d -p 8080:8080 avimehenwal/cherrypy-app:0.4 ./app.py
 ```
 
 You can point your browser to http://locahost:8080/
@@ -36,4 +37,5 @@ You may rebuild the image:
 
 ```
 $ docker build -t MYREPO/IMAGE_NAME .
+$ docker build -t version:0.2 -t author:avimehenwal -t base:alpine -t avimehenwal/cherrypy-app .
 ```

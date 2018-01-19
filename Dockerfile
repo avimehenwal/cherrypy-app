@@ -1,9 +1,13 @@
 FROM frolvlad/alpine-python3
-MAINTAINER Sylvain Hellegouarch
-LABEL version="0.1"
+MAINTAINER avimehenwal
 
-COPY requirements.txt requirements.txt 
+LABEL author=avimehenwal
+ENV python=3
+ENV webframework=cherrypy
+
+COPY . /app
+WORKDIR /app
 RUN pip install -r requirements.txt
 
-COPY app.py app.py
-ENTRYPOINT ["python3", "app.py"]
+#CMD ["python3", "app.py"]
+ENTRYPOINT ["python3"]
