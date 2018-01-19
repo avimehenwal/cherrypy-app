@@ -1,14 +1,11 @@
 image: docker:latest
 
 stages:
-- build
 - test
 
 services:
   - docker:dind
-
-before_script:
-  - docker run --rm registry.gitlab.com/avimehenwal/cherrypy-app app.py
+  - docker run -d -p 8080:8080 registry.gitlab.com/avimehenwal/cherrypy-app app.py
 
 app-test:
   stage: test
