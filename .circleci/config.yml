@@ -11,7 +11,7 @@ jobs:
     steps:
       - checkout
       - run: docker login -u $DOCKERHUB_ID -p $DOCKERHUB_PASS
-      - run: docker build -t $CIRCLE_PROJECT_USERNAME/auto-cherrypy-app:$CIRCLE_BRANCH-$CIRCLE_BUILD_NUM
+      - run: docker build -t $CIRCLE_PROJECT_USERNAME/auto-cherrypy-app:$CIRCLE_BRANCH-$CIRCLE_BUILD_NUM .
       - run: docker push $CIRCLE_PROJECT_USERNAME/auto-cherrypy-app:$CIRCLE_BRANCH-$CIRCLE_BUILD_NUM
 workflows:
   version: 2
