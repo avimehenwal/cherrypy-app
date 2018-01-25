@@ -1,12 +1,13 @@
-FROM frolvlad/alpine-python3
-MAINTAINER avimehenwal
+FROM python:3
+# base ubuntu with python and bash
 
 LABEL author=avimehenwal
 ENV python=3
-ENV testframework=unittest
+ENV webframework=cherrypy
+ENV environment=testing
 
 COPY . /app
 WORKDIR /app
-RUN pip install -r test-requirements.txt; exit 0
+RUN pip install -r requirements.txt
 
-CMD ["python3", "test_app.py"]
+CMD ["py.test", "-s", "test_app.py"]

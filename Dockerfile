@@ -1,5 +1,5 @@
-FROM frolvlad/alpine-python3
-MAINTAINER avimehenwal
+FROM python:3
+# base ubuntu with python and bash
 
 LABEL author=avimehenwal
 ENV python=3
@@ -9,5 +9,4 @@ COPY . /app
 WORKDIR /app
 RUN pip install -r requirements.txt
 
-#CMD ["python3", "app.py"]
-ENTRYPOINT ["python3"]
+ENTRYPOINT ["python"]

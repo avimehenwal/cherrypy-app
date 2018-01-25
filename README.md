@@ -49,3 +49,9 @@ column-oriented: HBase, Cassandra
 key-store: redis, memcached
 document oriented: Couchdb, MongoDB
 graph-oriented: neo4j
+
+
+## ISSUES
+1. Unable to run app with cherryd both on local and inside docker. 
+python app.py - works good within container provided host and port are supplied
+cherryd app.py

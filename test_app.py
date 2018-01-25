@@ -1,26 +1,43 @@
-import unittest
-import requests
+# -*- coding: utf-8 -*-
+import cherrypy
+from cherrypy.test import helper
 
-from lxml.html import fromstring
+from app import Root
 
-class TestHelloWorld(unittest.TestCase):
+class SimpleCPTest(helper.CPWebCase):
 
-    URL = "http://localhost:8080/"
-    #URL = "http://example.com/"
+    def setup_server():
+        #class Root(object):
+        #    @cherrypy.expose
+        #    def echo(self, message):
+        #        return message
+        cherrypy.tree.mount(Root())
+        cherrypy.config.update({'environment': "test_suite"})
+    setup_server = staticmethod(setup_server)
 
-    def setUp(self):
-        self.homepage = requests.get(self.URL)
+    def test_index_output(self):
+        self.getPage("/")
+        self.assertStatus('200 OK')
+        self.assertHeader('Content-Type', 'text/html;charset=utf-8')
+        self.assertBody('hello world')
 
-    def test_homepage_response(self):
-        http_code = self.homepage.status_code
-        self.assertEqual(http_code, 200)
+    def test_message_should_be_returned_as_is(self):
+        self.getPage("/echo?message=Hello%20world")
+        self.assertStatus('200 OK')
+        self.assertHeader('Content-Type', 'text/html;charset=utf-8')
+        self.assertBody('Hello world')
 
-    def test_app_title(self):
-        tree = fromstring(self.homepage.content)
-        expected = "avimehenwal"
-        actual   = tree.findtext('.//title').strip()
-        self.assertEqual(actual, expected)
-
-if __name__ == '__main__':
-    unittest.main()
-
+    def test_non_utf8_message_will_fail(self):
+        """
+        CherryPy defaults to decode the query-string
+        using UTF-8, trying to send a query-string with
+        a different encoding will raise a 404 since
+        it considers it's a different URL.
+        """
+        self.getPage("/echo?message=A+bient%F4t",
+                     headers=[
+                         ('Accept-Charset', 'ISO-8859-1,utf-8'),
+                         ('Content-Type', 'text/html;charset=ISO-8859-1')
+                     ]
+        )
+        self.assertStatus('404 Not Found')
