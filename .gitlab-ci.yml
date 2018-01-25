@@ -8,6 +8,5 @@ services:
 
 app-test:
   stage: test
-  image: avimehenwal/test-cherrypy-app:3
   script:
   - docker run avimehenwal/test-cherrypy-app:3
