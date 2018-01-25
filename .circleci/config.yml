@@ -15,7 +15,7 @@ jobs:
       - run: docker push avimehenwal/auto-cherrypy-app:$CIRCLE_BRANCH
 workflows:
   version: 2
-  test_build_registry:
+  test_and_build:
   jobs:
   - test
   - build
