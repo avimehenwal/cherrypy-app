@@ -9,8 +9,11 @@ COPY . /app
 WORKDIR /app
 RUN pip install -r requirements.txt
 
+# RUN ENVIRONMENT
+#ENTRYPOINT ["python"]
+
 # if APP-DEPLOY
-ENTRYPOINT ["python"]
+CMD ["python", "app.py"]
 
 # if TEST
 #CMD ["py.test", "-s", "test_app.py"]
