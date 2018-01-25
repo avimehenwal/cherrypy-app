@@ -8,7 +8,6 @@ jobs:
       - run: docker run avimehenwal/test-cherrypy-app
   build:
     machine: true
-    commands:
     steps:
       - checkout
       - run: docker login -u $DOCKERHUB_ID -p $DOCKERHUB_PASS
