@@ -6,3 +6,11 @@ jobs:
       - checkout
       - run: docker build -f Test_Dockerfile -t avimehenwal/test-cherrypy-app .
       - run: docker run avimehenwal/test-cherrypy-app
+  hub:
+    machine: true
+    commands:
+    steps:
+      - checkout
+      - run: docker login -u $DOCKERHUB_ID -p $DOCKERHUB_PASS
+      - run: docker build -f Test_Dockerfile -t avimehenwal/auto-cherrypy-app:$CIRCLE_BRANCH .
+      - run: docker push avimehenwal/auto-cherrypy-app:$CIRCLE_BRANCH
