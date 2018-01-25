@@ -1,12 +1,12 @@
 version: 2
 jobs:
-  build:
+  test:
     machine: true
     steps:
       - checkout
       - run: docker build -f Test_Dockerfile -t avimehenwal/test-cherrypy-app .
       - run: docker run avimehenwal/test-cherrypy-app
-  hub:
+  build:
     machine: true
     commands:
     steps:
@@ -14,3 +14,9 @@ jobs:
       - run: docker login -u $DOCKERHUB_ID -p $DOCKERHUB_PASS
       - run: docker build -f Test_Dockerfile -t avimehenwal/auto-cherrypy-app:$CIRCLE_BRANCH .
       - run: docker push avimehenwal/auto-cherrypy-app:$CIRCLE_BRANCH
+workflows:
+  version: 2
+  test_build_registry:
+  jobs:
+  - test
+  - build
