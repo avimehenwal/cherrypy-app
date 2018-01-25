@@ -10,7 +10,7 @@ services:
 build-app:
   stage: build
   script:
-  - docker build -t avimehenwal/test-cherrypy-app .
+  - docker build -f Test_Dockerfile -t avimehenwal/test-cherrypy-app .
   - docker tag avimehenwal/test-cherrypy-app avimehenwal/test-cherrypy-app:latest
   - docker push avimehenwal/test-cherrypy-app
 
