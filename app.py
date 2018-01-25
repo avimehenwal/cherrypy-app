@@ -23,6 +23,6 @@ class Root(object):
         return cherrypy.request.app.config['avi']['name']
 
 if __name__ == '__main__':
-    cherrypy.config.update("server.conf")
     # MOUNTING SINGLE APP
-    cherrypy.quickstart(Root(), '/', 'server.conf')
+    cherrypy.config.update("server.conf")
+    cherrypy.quickstart(Root(), '/', "app.conf")

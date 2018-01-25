@@ -15,11 +15,9 @@ class SimpleCPTest(helper.CPWebCase):
         cherrypy.config.update({'environment': "test_suite"})
     setup_server = staticmethod(setup_server)
 
-    def test_index_output(self):
-        self.getPage("/")
-        self.assertStatus('200 OK')
-        self.assertHeader('Content-Type', 'text/html;charset=utf-8')
-        self.assertBody('hello world')
+    #def test_index_output(self):
+    #    self.getPage("/")
+    #    self.assertStatus('200 OK')
 
     def test_message_should_be_returned_as_is(self):
         self.getPage("/echo?message=Hello%20world")
