@@ -18,4 +18,6 @@ workflows:
   test_and_build:
     jobs:
       - test
-      - build
+      - build:
+          required:
+          - test
