@@ -1,10 +1,7 @@
 version: 2
 jobs:
   build:
-    docker:
-      - image: circleci/python:3.6-stretch-node
+    machine: true
     steps:
       - checkout
-      - run: sudo pip install cherrypy
-      - run: sudo pip install pytest
-      - run: py.test -s test_app.py
+      - run: docker build -t avimehenwal/cherrypy-app:$CIRCLE_BRANCH .
