@@ -1,25 +1,25 @@
 image: docker:latest
 
 stages:
-- build
 - test
-- run
 
 services:
   - docker:dind
 
-build-docker-images:
-  stage: build
-  script:
-  - docker build -t avimehenwal/cherrypy-app:5 .
-  - docker build -f Test_Dockerfile -t avimehenwal/test-cherrypy-app:2 .
+    #build-docker-images:
+    #  stage: build
+    #  script:
+    #  - docker build -t avimehenwal/cherrypy-app:5 .
+    #  - docker build -f Test_Dockerfile -t avimehenwal/test-cherrypy-app:2 .
 
 app-test:
   stage: test
+  image: avimehenwal/test-cherrypy-app:2
   script:
-  - docker run --name testcpy --rm -it avimehenwal/test-cherrypy-app:2
+  - docker run avimehenwal/test-cherrypy-app:2
 
-prod-app-run:
-  stage: run
-  script:
-  - docker run -ti --name cpy -d -p 8081:8081 avimehenwal/cherrypy-app:5 app.py
+#prod-app-run:
+#  stage: test
+#  image: avimehenwal/cherrypy-app:5
+#  script:
+#  - docker run -d -p 8081:8081 avimehenwal/cherrypy-app:5 app.py
