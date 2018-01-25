@@ -1,4 +1,5 @@
 # CHERRYPY-APP
+[![CircleCI](https://circleci.com/gh/avimehenwal/cherrypy-app/tree/master.svg?style=svg)](https://circleci.com/gh/avimehenwal/cherrypy-app/tree/master)
 
 A very basic web application using the
 [CherryPy](http://cherrypy.org/) framework and Python 3.5.
@@ -52,6 +53,6 @@ graph-oriented: neo4j
 
 
 ## ISSUES
-1. Unable to run app with cherryd both on local and inside docker. 
+1. Unable to run app with cherryd both on local and inside docker.
 python app.py - works good within container provided host and port are supplied
 cherryd app.py

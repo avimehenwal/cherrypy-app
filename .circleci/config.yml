@@ -5,4 +5,6 @@ jobs:
       - image: circleci/python:3.6-stretch-node
     steps:
       - checkout
-      - run: echo "First Hello"
+      - run: pip install cherrypy
+      - run: pip install pytest
+      - run: py.test -s test_app.py
