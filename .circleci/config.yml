@@ -4,4 +4,5 @@ jobs:
     machine: true
     steps:
       - checkout
-      - run: docker build -t avimehenwal/cherrypy-app:$CIRCLE_BRANCH .
+      - run: docker build -f Test_Dockerfile -t avimehenwal/test-cherrypy-app .
+      - run: docker run avimehenwal/test-cherrypy-app
