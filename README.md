@@ -56,3 +56,11 @@ graph-oriented: neo4j
 1. Unable to run app with cherryd both on local and inside docker.
 python app.py - works good within container provided host and port are supplied
 cherryd app.py
+
+## SWARM DEPLOYMENT
+
+```
+docker-machine create --driver virtualbox myvm1
+
+```
+
