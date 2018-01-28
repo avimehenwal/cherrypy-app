@@ -1,0 +1,6 @@
+version: '3'
+services:
+  cherrypy-app:
+    image: avimehenwal/auto-cherrypy-app
+    ports:
+    - "8081:8081"
