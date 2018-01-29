@@ -1,13 +1,14 @@
 import cherrypy
-import sqlite3
+from cherrypy import tools
 
 
 @cherrypy.expose
+@cherrypy.tools.json_out()		# tools to send json output
 class RESTWebApp(object):
 
 	def GET(self):
-		print(cherrypy.request.headers)
 		#return cherrypy.request.wsgi_environ
+		#import ipdb; ipdb.set_trace()
 		return cherrypy.request.headers
 
 if __name__ == '__main__':
@@ -15,9 +16,7 @@ if __name__ == '__main__':
 	conf = {
 	    '/': {
 	        'request.dispatch': cherrypy.dispatch.MethodDispatcher(),
-	        'tools.sessions.on': True,
 	        'tools.response_headers.on': True,
-	        'tools.response_headers.headers': [('Content-Type', 'text/plain')],
 	    }
 	}
 	cherrypy.quickstart(RESTWebApp(), '/', conf)
