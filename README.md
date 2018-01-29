@@ -1,25 +1,18 @@
-# CHERRYPY-APP
 [![CircleCI](https://circleci.com/gh/avimehenwal/cherrypy-app/tree/master.svg?style=svg)](https://circleci.com/gh/avimehenwal/cherrypy-app/tree/master)
 
+# CHERRYPY-APP
+
 A very basic web application using the
-[CherryPy](http://cherrypy.org/) framework and Python 3.5.
-
+[CherryPy](http://cherrypy.org/) framework and [Python 3.5](https://www.python.org/).
 The image is quite light thanks to
-[Alpine Linux](https://hub.docker.com/r/frolvlad/alpine-python3/).
+[Official python image](https://hub.docker.com/_/python/).
 
-
-## App in action
+## Application in action
 
 ### RUN
 
 ```
-$ docker run --name cpy --rm -d -p 8080:8080 avimehenwal/cherrypy-app:0.4 ./app.py
-```
-
-For live logs run like
-
-```
-$ docker run --name cpy --rm -p 8080:8080 avimehenwal/cherrypy-app:0.4 helloworld.py
+$ docker run --name cpy --rm -d -p 8081:8081 avimehenwal/auto-cherrypy-app
 ```
 
 You can point your browser to http://locahost:8080/
@@ -27,40 +20,37 @@ You can point your browser to http://locahost:8080/
 ### LOGS
 
 ```
-$ docker logs cherrypy
+$ docker logs --follow cpy
 ```
 
 ### STOP
 
 ```
-$ docker stop cherrypy
+$ docker stop cpy
 ```
 
+## DEMO
 
-## Build it
+[![asciicast](https://asciinema.org/a/159797.png)](https://asciinema.org/a/159797?speed=2)
 
-```
-$ docker build -t avimehenwal/cherrypy-app:0.5 .
-```
+## NOTES
 
 To store, persist and query data you need a proper database server. There exist many to choose from with various paradigm support:
 
-relational: PostgreSQL, SQLite, MariaDB, Firebird
-column-oriented: HBase, Cassandra
-key-store: redis, memcached
-document oriented: Couchdb, MongoDB
-graph-oriented: neo4j
-
+* __relational__: PostgreSQL, SQLite, MariaDB, Firebird
+* __column-oriented__: HBase, Cassandra
+* __key-store__: redis, memcached
+* __document oriented__: Couchdb, MongoDB
+* __graph-oriented__: neo4j
 
 ## ISSUES
-1. Unable to run app with cherryd both on local and inside docker.
+1. Unable to run app with __cherryd__ both on local and inside docker.
 python app.py - works good within container provided host and port are supplied
 cherryd app.py
 
 ## SWARM DEPLOYMENT
 
-```
-docker-machine create --driver virtualbox myvm1
-
-```
-
+1. Create a swarm cluster with 2 or 3 nodes
+2. Deploy application as a service
+3. Scale up/down
+4. Install Rolling updates
