@@ -5,6 +5,7 @@ __pycache__/
 
 # VIM extensions
 *.swp
+*.db
 
 # Distribution / packaging
 .Python
