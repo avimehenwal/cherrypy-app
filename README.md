@@ -57,7 +57,6 @@ cherryd app.py
 
 ## RESTful
 - https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.7
-- https://stackoverflow.com/questions/15786961/friendly-url-for-a-rest-webservice-with-cherrypy/15789415#15789415
 - http://docs.cherrypy.org/en/latest/advanced.html#restful
 - https://docs.google.com/presentation/d/1pVtqh99VfmOycus9OoY19jemSYPsXbdia-v2szT7Vs0/edit#slide=id.g229197c9_0_29
 - https://www.ibm.com/developerworks/library/ws-restful/index.html
