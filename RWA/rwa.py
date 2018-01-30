@@ -34,8 +34,18 @@ class RestApiCollection(object):
         cherrypy.log("GET request ready for dispatch")
         return {"results" : result}
 
+    @cherrypy.tools.json_out()
+    @cherrypy.tools.json_in()
     def POST(self):
-        return "Add new collection"
+        e = cherrypy.request.json
+        print(e)
+        for k,v in e.items():
+            print("key: {}\t value: {}->{}".format(k,v,type(v)))
+        # import ipdb; ipdb.set_trace()
+        with sqlite3.connect(DB_STRING) as con:
+            con.execute("INSERT INTO COMPANY VALUES (NULL, ?, ?, ?, ?)",
+                [e['name'], e['age'], e['address'], e['salary'] ])
+        return {"INSERTED" : e}
 
 
 @cherrypy.expose
